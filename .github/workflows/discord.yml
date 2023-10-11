@@ -1,0 +1,26 @@
+name: Discord Notification
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  notify:
+    runs-on: ubunty-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Send Discord Notification
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+        run: node send-discord-notification.js
