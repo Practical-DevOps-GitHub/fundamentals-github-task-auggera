@@ -10,7 +10,7 @@
         {
           owner: process.env.GITHUB_REPOSITORY.split("/")[0],
           repo: process.env.GITHUB_REPOSITORY.split("/")[1],
-          pull_numbers: process.env.GITHUB_EVENT.pull_request.number,
+          pull_number: process.env.GITHUB_EVENT.pull_request.number,
         },
       );
 
